@@ -30,6 +30,7 @@ deploy:
   app: swe1-app
   env: poll-env
   bucket_name: "$AWS_BUCKET"
+  bucket_path: "travis/swe1-app"
   zip_file: deploy.zip
   cleanup: false
   wait_until_deployed: true
