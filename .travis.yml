@@ -5,11 +5,16 @@ python:
 
 install:
   - python3 -m pip install --upgrade pip
-  - python3 -m pip install -r requirements.txt
+  - python3 -m pip install -r swe1-app/requirements.txt
 
 script:
-  - cd swe1-app
-  - python3 manage.py test
+  - black --check swe1-app
+  - flake8 swe1-app
+  - coverage run swe1-app/manage.py test
+  - coverage report -m
+
+after_success:
+  - coveralls
 
 before_deploy:
   - cd "$TRAVIS_BUILD_DIR"
